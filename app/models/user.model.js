@@ -48,6 +48,19 @@ User.findById = (userId, result) => {
   });
 };
 
+User.findOne = (email, result) => {
+  sql.query(`SELECT * FROM user WHERE email = ${email}`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("user: ", res);
+    result(null, res);
+  });
+};
+
 User.getAll = result => {
   sql.query("SELECT * FROM user", (err, res) => {
     if (err) {

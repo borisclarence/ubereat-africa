@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-
+var jwt = require('jsonwebtoken');
+var bcrypt = require('bcryptjs');
+var config = require('./config-secret');
 const app = express();
 //const swaggerJsdoc = require('./swaggerDoc');
 

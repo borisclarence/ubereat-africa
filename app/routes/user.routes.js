@@ -4,6 +4,18 @@ module.exports = app => {
   // Create a new user
   app.post("/user", user.create);
 
+  // Register a new user
+  app.post("/register", user.register);
+
+  // Login a user
+  app.post("/login", user.login);
+
+  // Logout a user
+  app.post("/logout", user.logout);
+
+  // I'm a user logged
+  app.post("/me", user.userLogged);
+
   // Retrieve all users
   app.get("/user", user.findAll);
 

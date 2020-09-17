@@ -121,3 +121,74 @@ exports.deleteAll = (req, res) => {
     else res.send({ message: `All Users were deleted successfully!` });
   });
 };
+
+// Register and Save a new User
+exports.register = (req, res) => {
+  // Validate request
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+  var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+  // Create a User
+  const user = new User({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    adress_street: req.body.adress_street,
+    sex: req.body.sex,
+    phone_number: req.body.phone_number,
+    picture: req.body.picture,
+    email: req.body.email,
+    password: hashedPassword,
+    is_active: req.body.is_active,
+    state_user: req.body.state_user,
+    profile_id: req.body.profile_id,
+    created_at: req.body.created_at
+  });
+
+  // Save User in the database
+  User.create(user, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the USer."
+      });
+    else {
+      var token = jwt.sign({ id: user.iduser }, config.secret, {
+        expiresIn: 86400 // expires in 24 hours
+      });
+      //res.send(data);
+      res.status(200).send({ auth: true, token: token });
+    }
+  });
+};
+
+// Login and Check a new User
+exports.login = (req, res) => {
+  User.findOne({ email: req.body.email }, function (err, user) {
+    if (err) return res.status(500).send('Error on the server.');
+    if (!user) return res.status(404).send('No user found.');
+
+    var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+    if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
+
+    var token = jwt.sign({ id: user.iduser }, config.secret, {
+      expiresIn: 86400 // expires in 24 hours
+    });
+
+    res.status(200).send({ auth: true, token: token });
+  });
+};
+
+exports.logout = (req, res) => {
+   res.status(200).send({ auth: false, token: null });
+};
+
+exports.userLogged = (req, res) => {
+  User.findById(req.userId, { password: 0 }, function (err, user) {
+    if (err) return res.status(500).send("There was a problem finding the user.");
+    if (!user) return res.status(404).send("No user found.");
+    res.status(200).send(user);
+  });
+};
