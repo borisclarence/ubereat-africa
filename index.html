@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Eat-Africa</title>
+  <title>ebooff-web</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -14,6 +14,7 @@
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style type="text/css">
     html {
       scroll-behavior: smooth;
@@ -59,7 +60,7 @@
 
       <!-- Brand -->
       <a class="navbar-brand" href="">
-        <strong>eat-africa</strong>
+        <strong>ebooff-web</strong>
       </a>
 
       <!-- Collapse -->
@@ -73,16 +74,22 @@
 
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="#home">Accueil
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#about">Nos Produits</a>
+            <a class="nav-link" href="#about">A Propos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#partner">Nos Partenaires</a>
+            <a class="nav-link" href="#service">Nos services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#menu">Nos menus</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#blog">Blog</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#contact">Contact</a>
@@ -187,7 +194,7 @@
             <br>
             <br>
             <br>
-            <h2 class="display-4 font-weight-bold">Bienvenue sur eat-africa</h2>
+            <h2 class="display-4 font-weight-bold">Bienvenue sur ebooff</h2>
 
             <hr class="hr-light">
 
@@ -229,13 +236,15 @@
     <div class="container">
 
       <!--Section: Main info-->
-      <section class="mt-5 wow fadeIn">
+      <section class="mt-5 wow fadeIn" id="about">
+
+        <h2 class="h3 text-center mb-5"><b>A Propos</b></h2>
 
         <!--Grid row-->
         <div class="row">
 
           <!--Grid column-->
-          <div class="col-md-6 mb-4">
+          <div class="col-md-6 mb-4" data-aos="fade-up-right">
 
             <img src="img/vegancook.jpg" class="img-fluid z-depth-1-half" alt="">
 
@@ -243,12 +252,12 @@
           <!--Grid column-->
 
           <!--Grid column-->
-          <div class="col-md-6 mb-4">
+          <div class="col-md-6 mb-4" data-aos="fade-up-left">
 
             <br>
             <!-- Main heading -->
-            <h3 class="h3 mb-3">Qui est eat-africa ?</h3>
-            <p>eat-africa est une solution de livraison de commande. </p>
+            <h3 class="h3 mb-3">Qui est ebooff ?</h3>
+            <p>ebooff est une solution de livraison de commande. </p>
             <p>Grâce à la géolocalisation nous vous apportons des plats chez vous.</p>
             <!-- Main heading -->
 
@@ -260,7 +269,9 @@
               <strong>Cotonou</strong>,
               <strong>Abomey</strong>
             </p>
-
+            <p>
+                <a href="about.html" class="btn btn-red">Plus d'informations</a>
+            </p>
             <!-- CTA -->
             <!--a target="_blank" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" class="btn btn-red btn-md">Download
               <i class="fas fa-download ml-1"></i>
@@ -280,21 +291,67 @@
 
       <hr class="my-5">
 
-      <!--Section: Main features & Quick Start-->
-      <section id="about">
+      <section id="service">
 
-        <h3 class="h3 text-center mb-5">Nos Produits</h3>
+        <style>
+          .border-top {
+            border-top-width: 2px !important;
+          }
+      	</style>
 
+        <h2 class="font-weight-bold text-center pb-2">Nos Services</h2>
+
+        <div class="row d-flex justify-content-center" data-aos="fade-up">
+
+          <div class="col-md-6 col-lg-5 col-xl-4">
+            <h5 class="font-weight-normal border-top border-light pt-4 mb-4"><a class="dark-grey-text" href="#">Commande</a></h5>
+            <p class="text-muted mb-5 pb-md-3">Les commandes effectuées sont pris en compte dès la validation par l'utilisateur. Les commandes effectuées sont pris en compte dès la validation par l'utilisateur.</p>
+          </div>
+
+          <div class="col-md-6 col-lg-5 col-xl-4">
+            <h5 class="font-weight-normal border-top border-light pt-4 mb-4"><a class="dark-grey-text"
+                href="#">Livraison</a></h5>
+            <p class="text-muted mb-5 pb-md-3">La livraison est effectuée principalement sur le territoire béninois ainsi que toutes les villes.
+            La livraison est effectuée principalement sur le territoire béninois ainsi que toutes les villes.</p>
+          </div>
+
+          <div class="w-100"></div>
+
+          <div class="col-md-6 col-lg-5 col-xl-4">
+            <h5 class="font-weight-normal border-top border-light pt-4 mb-4"><a class="dark-grey-text" href="#">Paiement
+                </a></h5>
+            <p class="text-muted mb-5">Le Paiement peut s'effectuer de deux façons: des paiements en ligne avec les systèmes de paiements locaux, et du paiement en espèce.</p>
+          </div>
+
+          <div class="col-md-6 col-lg-5 col-xl-4">
+            <h5 class="font-weight-normal border-top border-light pt-4 mb-4"><a class="dark-grey-text"
+                href="#">Notation</a></h5>
+            <p class="text-muted mb-5">Des notations sont effectuées pour approuver et commenter notre application. Des notations sont effectuées pour approuver et commenter notre application.</p>
+          </div>
+
+        </div>
+      </section>
+      <!-- Section -->
+
+
+      <hr class="mb-5">
+
+      <!--Section: More-->
+      <section id="menu">
+
+        <h2 class="my-5 h3 text-center"><b>Nos Menus</b></h2>
+
+        <!--First row-->
         <!--Grid row-->
         <div class="row wow fadeIn">
 
           <!--Grid column-->
-          <div class="col-lg-6 col-md-12 px-4">
+          <div class="col-lg-6 col-md-12 px-4" data-aos="fade-up">
 
             <!--First row-->
             <div class="row">
               <div class="col-1 mr-3">
-                <i class="fas fa-code fa-2x red-text"></i>
+                <i class="fas fa-share fa-2x red-text"></i>
               </div>
               <div class="col-10">
                 <h5 class="feature-title">Barbecue Agoutie Braisé</h5>
@@ -308,7 +365,7 @@
             <!--Second row-->
             <div class="row">
               <div class="col-1 mr-3">
-                <i class="fas fa-book fa-2x blue-text"></i>
+                <i class="fas fa-share fa-2x blue-text"></i>
               </div>
               <div class="col-10">
                 <h5 class="feature-title">Poisson Braisé au riz</h5>
@@ -323,7 +380,7 @@
             <!--Third row-->
             <div class="row">
               <div class="col-1 mr-3">
-                <i class="fas fa-graduation-cap fa-2x cyan-text"></i>
+                <i class="fas fa-share fa-2x cyan-text"></i>
               </div>
               <div class="col-10">
                 <h5 class="feature-title">Akassa sauce feuille</h5>
@@ -346,91 +403,6 @@
           <!--/Grid column-->
 
         </div>
-        <!--/Grid row-->
-
-      </section>
-      <!--Section: Main features & Quick Start-->
-
-      <hr class="mb-5">
-
-      <!--Section: More-->
-      <section id="partner">
-
-        <h2 class="my-5 h3 text-center">Nos Partenaires</h2>
-
-        <!--First row-->
-        <div class="row features-small mt-5 wow fadeIn">
-
-          <!--Grid column-->
-          <div class="col-xl-3 col-lg-6">
-            <!--Grid row-->
-            <div class="row">
-              <div class="col-2">
-                <i class="fab fa-firefox fa-2x mb-1 red-text" aria-hidden="true"></i>
-              </div>
-              <div class="col-10 mb-2 pl-3">
-                <h5 class="feature-title font-bold mb-1">Le Maquis du Port</h5>
-                <p class="grey-text mt-2">Restaurant de Cotonou
-                </p>
-              </div>
-            </div>
-            <!--/Grid row-->
-          </div>
-          <!--/Grid column-->
-
-          <!--Grid column-->
-          <div class="col-xl-3 col-lg-6">
-            <!--Grid row-->
-            <div class="row">
-              <div class="col-2">
-                <i class="fas fa-level-up-alt fa-2x mb-1 red-text" aria-hidden="true"></i>
-              </div>
-              <div class="col-10 mb-2">
-                <h5 class="feature-title font-bold mb-1">Olam Benin</h5>
-                <p class="grey-text mt-2">Entreprise en charge de l'agroalimentaire
-                </p>
-              </div>
-            </div>
-            <!--/Grid row-->
-          </div>
-          <!--/Grid column-->
-
-          <!--Grid column-->
-          <div class="col-xl-3 col-lg-6">
-            <!--Grid row-->
-            <div class="row">
-              <div class="col-2">
-                <i class="fas fa-comments fa-2x mb-1 red-text" aria-hidden="true"></i>
-              </div>
-              <div class="col-10 mb-2">
-                <h5 class="feature-title font-bold mb-1">MTN Benin</h5>
-                <p class="grey-text mt-2">Opérateur mobile
-                </p>
-              </div>
-            </div>
-            <!--/Grid row-->
-          </div>
-          <!--/Grid column-->
-
-          <!--Grid column-->
-          <div class="col-xl-3 col-lg-6">
-            <!--Grid row-->
-            <div class="row">
-              <div class="col-2">
-                <i class="fas fa-code fa-2x mb-1 red-text" aria-hidden="true"></i>
-              </div>
-              <div class="col-10 mb-2">
-                <h5 class="feature-title font-bold mb-1">AGRO Express</h5>
-                <p class="grey-text mt-2">Grande surface de distribution
-                  it.
-                </p>
-              </div>
-            </div>
-            <!--/Grid row-->
-          </div>
-          <!--/Grid column-->
-
-        </div>
         <!--/First row-->
 
       </section>
@@ -439,21 +411,73 @@
       <hr class="mb-5">
 
       <!--Section: Content-->
+      <section class="dark-grey-text" id="blog">
+
+      <!-- Section heading -->
+      <h2 class="text-center font-weight-bold mb-4 pb-2"><b>Blog</b></h2>
+
+      <!-- Grid row -->
+      <div class="row align-items-center" data-aos="fade-up">
+
+        <!-- Grid column -->
+        <div class="col-lg-5">
+
+          <!-- Featured image -->
+          <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4">
+            <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg" alt="Sample image">
+            <a>
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-lg-7">
+
+          <!-- Category -->
+          <a href="#!" class="red-text">
+            <h6 class="font-weight-bold mb-3"><i class="fas fa-utensils pr-2"></i>Food</h6>
+          </a>
+          <!-- Post title -->
+          <h4 class="font-weight-bold mb-3"><strong>Nous sommes au vert</strong></h4>
+          <!-- Excerpt -->
+          <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+            placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis debitis.</p>
+          <!-- Post data -->
+          <!--p>by <a><strong>Carine Fox</strong></a>, 19/08/2018</p-->
+          <!-- Read more button -->
+          <a class="btn btn-red btn-md btn-rounded mx-0">Plus d'informations</a>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+      <hr class="my-5">
+
+      </section>
+      <!--Section: Content-->
+
+
+      <!--Section: Content-->
     <section id="contact" class="px-md-5 mx-md-5 text-center text-lg-left dark-grey-text">
 
-      <h2 class="my-5 h3 text-center">Contact</h2>
+      <h2 class="my-5 h3 text-center"><b>Contact</b></h2>
 
       <!--Grid row-->
-      <div class="row">
+      <div class="row" data-aos="fade-up">
 
         <!--Grid column-->
         <div class="col-lg-5 col-md-12 mb-0 mb-md-0">
 
-          <h3 class="font-weight-bold">Contactez-nous</h3>
-
+          <!--h3 class="font-weight-bold">Contactez-nous</h3-->
+          <br>
           <p class="text-muted">Pour toutes informations, ou interrogations envoyez nous un mail ou appelez-nous.</p>
 
-          <p><span class="font-weight-bold mr-2">Email:</span><a href="">contact@eatafrica.com</a></p>
+          <p><span class="font-weight-bold mr-2">Email:</span><a href="">contact@ebooff.com</a></p>
           <p><span class="font-weight-bold mr-2">Phone:</span><a href="">+48 123 456 789</a></p>
 
         </div>
@@ -570,7 +594,7 @@
     <!--Copyright-->
     <div class="footer-copyright py-3">
       © 2020 Copyright:
-      <a href="https://eat-africa.com/" target="_blank"> eat-africa.com </a>
+      <a href="https://ebooff.netlify.app/" target="_blank"> ebooff-web.com </a>
     </div>
     <!--/.Copyright-->
 
@@ -616,6 +640,10 @@
       } // End if
     });
   });
+  </script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
   </script>
 </body>
 
