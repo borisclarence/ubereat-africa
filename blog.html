@@ -27,6 +27,27 @@
       height: 100%;
     }
 
+      .ml6 {
+        position: relative;
+        font-weight: 900;
+        font-size: 3.3em;
+        text-align: center;
+      }
+
+      .ml6 .text-wrapper {
+        position: relative;
+        display: inline-block;
+        padding-top: 0.2em;
+        padding-right: 0.05em;
+        padding-bottom: 0.1em;
+        overflow: hidden;
+      }
+
+      .ml6 .letter {
+        display: inline-block;
+        line-height: 1em;
+      }
+
     @media (max-width: 740px) {
       html,
       body,
@@ -57,7 +78,7 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar darknight">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar darknight">
     <div class="container">
 
       <!-- Brand -->
@@ -134,11 +155,20 @@
       <!--Main container-->
       <div class="container">
 
+        <div class="row" style="margin-bottom: 65px">
+        </div>
         <!--Section: Content-->
         <section class="dark-grey-text">
 
           <!-- Section heading -->
-          <h2 class="text-center font-weight-bold mb-4 pb-2">Actualités</h2>
+          <!--h2 class="text-center font-weight-bold mb-4 pb-2">Actualités</h2-->
+          <h1 class="ml6">
+            <span class="text-wrapper">
+              <span class="letters">Actualités</span>
+            </span>
+          </h1>
+
+
           <!-- Section description -->
           <p class="text-center mx-auto w-responsive mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur veniam.</p>
 
@@ -146,7 +176,7 @@
           <div class="row align-items-center">
 
             <!-- Grid column -->
-            <div class="col-lg-5">
+            <div class="col-lg-5 wow slideInLeft" data-wow-delay="0.03s">
 
               <!-- Featured image -->
               <!--div class="view overlay rounded z-depth-2 mb-lg-0 mb-4"-->
@@ -161,7 +191,7 @@
             <!-- Grid column -->
 
             <!-- Grid column -->
-            <div class="col-lg-7">
+            <div class="col-lg-7 wow slideInRight" data-wow-delay="0.03s">
 
               <!-- Category -->
               <a href="#!" class="green-text">
@@ -195,7 +225,7 @@
           <div class="row align-items-center">
 
             <!-- Grid column -->
-            <div class="col-lg-5">
+            <div class="col-lg-5 wow slideInLeft" data-wow-delay="0.03s">
 
               <!-- Featured image -->
               <!--div class="view overlay rounded z-depth-2 mb-lg-0 mb-4"-->
@@ -210,7 +240,7 @@
             <!-- Grid column -->
 
             <!-- Grid column -->
-            <div class="col-lg-7">
+            <div class="col-lg-7 wow slideInRight" data-wow-delay="0.03s">
 
               <!-- Category -->
               <a href="#!" class="green-text">
@@ -342,6 +372,27 @@
     $( '#navbarSupportedContent .navbar-nav a' ).on( 'click', function () {
         $( '#navbarSupportedContent .navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
         $( this ).parent( 'li' ).addClass( 'active' );
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+  <script type="text/javascript">
+  // Wrap every letter in a span
+    var textWrapper = document.querySelector('.ml6 .letters');
+    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+    anime.timeline({loop: true})
+    .add({
+      targets: '.ml6 .letter',
+      translateY: ["1.1em", 0],
+      translateZ: 0,
+      duration: 750,
+      delay: (el, i) => 50 * i
+    }).add({
+      targets: '.ml6',
+      opacity: 0,
+      duration: 1000,
+      easing: "easeOutExpo",
+      delay: 1000
     });
   </script>
   </body>

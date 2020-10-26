@@ -14,33 +14,18 @@
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style type="text/css">
+    html {
+      scroll-behavior: smooth;
+    }
+
     html,
     body,
     header,
     .view {
       height: 100%;
     }
-
-    .ml6 {
-      position: relative;
-      font-weight: 900;
-      font-size: 3.3em;
-    }
-
-    .ml6 .text-wrapper {
-      position: relative;
-      display: inline-block;
-      padding-top: 0.2em;
-      padding-right: 0.05em;
-      padding-bottom: 0.1em;
-      overflow: hidden;
-    }
-
-.ml6 .letter {
-  display: inline-block;
-  line-height: 1em;
-}
 
     @media (max-width: 740px) {
       html,
@@ -151,34 +136,81 @@
       <div class="container">
 
         <!--Grid row-->
-        <div class="row wow fadeIn" style="margin-top:21%">
-
-
+        <div class="row wow fadeIn" style="margin-top:25%">
 
           <!--Grid column-->
-          <div class="col-md-6 col-xl-5 mb-4">
+          <div class="col-md-5 col-xl-5 mb-4">
 
-            <img src="img/nexus6p-portrait.png" alt="" class="img-fluid">
+            <!--Card-->
+            <!--div class="card">
 
+              <!--Card content-->
+              <!--div class="card-body">
+
+                <!-- Form -->
+                <!--form name="">
+                  <!-- Heading -->
+                  <!--h3 class="dark-grey-text text-center">
+                    <strong><i class="fas fa-adjust prefix grey-text"></i></strong>
+                  </h3>
+                  <hr>
+
+                  <div class="md-form">
+                    <i class="fas fa-user prefix grey-text"></i>
+                    <input type="text" id="form3" class="form-control">
+                    <label for="form3">Your name</label>
+                  </div>
+                  <div class="md-form">
+                    <i class="fas fa-envelope prefix grey-text"></i>
+                    <input type="text" id="form2" class="form-control">
+                    <label for="form2">Your email</label>
+                  </div>
+
+                  <div class="md-form">
+                    <i class="fas fa-pencil-alt prefix grey-text"></i>
+                    <textarea type="text" id="form8" class="md-textarea"></textarea>
+                    <label for="form8">Your message</label>
+                  </div>
+
+                  <div class="text-center">
+                    <button class="btn btn-red">Send</button>
+                    <hr>
+                    <fieldset class="form-check">
+                      <input type="checkbox" class="form-check-input" id="checkbox1">
+                      <label for="checkbox1" class="form-check-label dark-grey-text">Subscribe me to the newsletter</label>
+                    </fieldset>
+                  </div>
+
+                </form>
+                <!-- Form -->
+
+              <!--/div>
+
+            </div-->
+            <!--/.Card-->
+            <!--img src="https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new.png" alt="" class="img-fluid"-->
+            <img src="https://mdbootstrap.com/img/Mockups/Transparent/Small/iphone-admin.png" alt="" class="img-fluid">
           </div>
           <!--Grid column-->
 
           <!--Grid column-->
-          <div class="col-md-6 mb-4 white-text text-center text-md-left">
-
-            <!--h4 class="display-4 font-weight-bold">Bienvenue sur ebooff</h4-->
-
-            <h1 class="ml6">
-              <span class="text-wrapper">
-                <span class="letters">Bienvenue sur ebooff</span>
-              </span>
-            </h1>
+          <div class="col-md-7 mb-4 white-text mt-1 text-center text-md-left">
+            <!--br>
+            <br>
+            <br>
+            <br-->
+            <h2 class="display-4 font-weight-bold">Bienvenue sur ebooff</h2>
 
             <hr class="hr-light">
 
             <p>
               <strong>Vos plats préférés livrés chez vous en un temps record, grâce à notre système de géolocalisation.</strong>
             </p>
+
+            <!--p class="mb-4 d-none d-md-block">
+              <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and written versions
+                available. Create your own, stunning website.</strong>
+            </p-->
 
             <a target="_blank" href="https://play.google.com/store/" class="btn btn-red btn-rounded mx-0 btn-lg">
               <i class="fab fa-google-play"></i>
@@ -220,18 +252,18 @@
           <!--Grid column-->
           <div class="col-md-6 mb-4" data-aos="fade-up-right">
 
-            <img src="img/cheesepizza.jpg" class="img-fluid z-depth-1-half animated wow slideInLeft"  data-wow-delay="0.03s" alt="">
+            <img src="img/cheesepizza.jpg" class="img-fluid z-depth-1-half" alt="">
 
           </div>
           <!--Grid column-->
 
           <!--Grid column-->
-          <div class="col-md-6 mb-4 wow slideInRight" data-wow-delay="0.03s">
+          <div class="col-md-6 mb-4" data-aos="fade-up-left">
 
             <br>
             <!-- Main heading -->
-            <h3 class="h3 mb-3 light-text font-weight-bold"> <i>Qui est ebooff ?</i> </h3>
-            <p>ebooff est la solution de <b>commande</b> et <b>livraison de repas</b> de vos vendeurs préférés.</p>
+            <h3 class="h3 mb-3 light-text">Qui est ebooff ?</h3>
+            <p>ebooff est la solution de commande et de livraison de repas de vos vendeurs préférés.</p>
             <p>Désormais, restez chez vous, eboof s’occupe de vos envies culinaires. Et ce, 7 jours sur 7, midi et soir, même les jours fériés.</p>
             <!-- Main heading -->
 
@@ -268,12 +300,12 @@
           .border-top {
             border-top-width: 2px !important;
           }
-        </style>
+      	</style>
         <div class="row" style="margin-bottom: 65px">
         </div>
         <h2 class="font-weight-bold green-text text-center pb-2">Nos Services</h2>
 
-        <div class="row d-flex justify-content-center wow slideInUp" data-wow-delay="0.03s">
+        <div class="row d-flex justify-content-center" data-aos="fade-up">
 
           <div class="col-md-6 col-lg-5 col-xl-4">
             <h5 class="font-weight-normal border-top border-light pt-4 mb-4"><a class="dark-grey-text" href="#">Commande</a></h5>
@@ -327,7 +359,7 @@
         <div class="row wow fadeIn">
 
           <!--Grid column-->
-          <div class="col-lg-6 col-md-12 px-4 wow slideInRight" data-wow-delay="0.03s">
+          <div class="col-lg-6 col-md-12 px-4" data-aos="fade-up">
 
             <!--First row-->
             <div class="row">
@@ -389,9 +421,8 @@
       </section>
       <!--Section: More-->
 
-      <hr class="my-5">
+      <hr class="mb-5">
 
-      <!--Section: Not enough-->
       <!--Section: Content-->
       <section class="dark-grey-text" id="blog">
 
@@ -401,7 +432,7 @@
       <h2 class="text-center font-weight-bold green-text mb-4 pb-2"><b>Blog</b></h2>
 
       <!-- Grid row -->
-      <div class="row align-items-center wow slideInRight" data-wow-delay="0.03s">
+      <div class="row align-items-center" data-aos="fade-up">
 
         <!-- Grid column -->
         <div class="col-lg-5 mb-4 mb-md-0">
@@ -441,13 +472,12 @@
       </div>
       <!-- Grid row -->
 
+      <hr class="my-5">
 
       </section>
       <!--Section: Content-->
 
-      <hr class="mb-5">
 
-      <!--Section: More-->
       <!--Section: Content-->
     <section id="contact" class="px-md-5 mx-md-5 text-center text-lg-left dark-grey-text">
 
@@ -456,7 +486,7 @@
       <h2 class="my-5 h3 green-text text-center"><b>Contact</b></h2>
 
       <!--Grid row-->
-      <div class="row wow slideInUp" data-wow-delay="0.03s">
+      <div class="row" data-aos="fade-up">
 
         <!--Grid column-->
         <div class="col-lg-5 col-md-12 mb-0 mb-md-0">
@@ -637,27 +667,6 @@
     $( '#navbarSupportedContent .navbar-nav a' ).on( 'click', function () {
         $( '#navbarSupportedContent .navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
         $( this ).parent( 'li' ).addClass( 'active' );
-    });
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-  <script type="text/javascript">
-  // Wrap every letter in a span
-    var textWrapper = document.querySelector('.ml6 .letters');
-    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-    anime.timeline({loop: true})
-    .add({
-      targets: '.ml6 .letter',
-      translateY: ["1.1em", 0],
-      translateZ: 0,
-      duration: 750,
-      delay: (el, i) => 50 * i
-    }).add({
-      targets: '.ml6',
-      opacity: 0,
-      duration: 1000,
-      easing: "easeOutExpo",
-      delay: 1000
     });
   </script>
   <script src="https://smtpjs.com/v3/smtp.js">
