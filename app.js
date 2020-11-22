@@ -2,9 +2,9 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
 var logger = require('morgan');
-
+var bodyParser = require('body-parser');
+const config = require('./config');
 
 var indexRouter = require('./routes/index');
 var registerRouter = require('./routes/register');
@@ -17,6 +17,14 @@ var restaurantRouter = require('./routes/restaurant');
 var settingsRouter = require('./routes/settings');
 var usersRouter = require('./routes/users');
 
+var firebase = require("firebase/app");
+
+// Add the Firebase products that you want to use
+require("firebase/auth");
+require("firebase/firestore");
+
+const db = admin.firestore();
+
 var app = express();
 
 // view engine setup
@@ -25,7 +33,6 @@ app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
