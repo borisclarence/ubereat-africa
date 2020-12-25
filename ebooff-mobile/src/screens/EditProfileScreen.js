@@ -6,6 +6,10 @@ import {
   ImageBackground,
   TextInput,
   StyleSheet,
+  Picker,
+  Platform,
+  Button,
+  CameraRoll
 } from 'react-native';
 
 import {useTheme} from 'react-native-paper';
@@ -19,11 +23,72 @@ import Animated from 'react-native-reanimated';
 
 import ImagePicker from 'react-native-image-crop-picker';
 
-const EditProfileScreen = () => {
+import * as ImagePickerExpo from 'expo-image-picker';
+import Constants from 'expo-constants';
+
+import { useAuth, db } from '../context/user-context';
+
+
+const userProfile = async (dataUser) => {
+  let response = [];
+
+    await  dataUser.get().then( (item) => {
+      if (item.exists) {
+
+          const selectedItem = {
+            id: item.id,
+            firstname: item.data().firstname,
+            lastname: item.data().lastname,
+            adress_street: item.data().adress_street,
+            sex: item.data().sex,
+            phone_number: item.data().phone_number,
+            picture: item.data().picture,
+            email:item.data().email
+          };
+          response.push(selectedItem);
+          console.log("Document data:", response);
+
+      } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+      }
+
+  }).catch(function(error) {
+      console.log("Error getting document:", error);
+  });
+  return response;
+}
+
+const EditProfileScreen = ({navigation}, value) => {
+
+  const [mycurrentUser, setMycurrentUser] = React.useState([]);
+  const [selectedValue, setSelectedValue] = React.useState('masculin');
+
+
+  const auth = useAuth();
+  const user = auth.user;
+  const docUser = db.collection('User').doc(user.uid);
+  let myResponse = [];
+
+
+
+
+  React.useEffect(() => {
+
+    const fetchData = async () => {
+      myResponse = await userProfile(docUser);
+      setMycurrentUser(myResponse)
+      console.log(myResponse)
+    };
+    fetchData();
+
+  }, []);
+
+
 
   const [image, setImage] = useState('https://api.adorable.io/avatars/80/abott@adorable.png');
   const {colors} = useTheme();
-
+    const bs = React.createRef();
   const takePhotoFromCamera = () => {
     ImagePicker.openCamera({
       compressImageMaxWidth: 300,
@@ -33,7 +98,7 @@ const EditProfileScreen = () => {
     }).then(image => {
       console.log(image);
       setImage(image.path);
-      this.bs.current.snapTo(1);
+      bs.current.snapTo(1);
     });
   }
 
@@ -46,11 +111,118 @@ const EditProfileScreen = () => {
     }).then(image => {
       console.log(image);
       setImage(image.path);
-      this.bs.current.snapTo(1);
+      bs.current.snapTo(1);
     });
   }
 
-  renderInner = () => (
+  const [data, setData] = React.useState({
+        firstname: '',
+        lastname: '',
+        adress_street: '',
+        username: '',
+        phone_number: '',
+        sex: '',
+        email: '',
+  });
+
+  const textUpdateNameChange = (val) => {
+      if( val.length !== 0 ) {
+          setData({
+              ...data,
+              firstname: val
+          });
+      } else {
+          setData({
+              ...data,
+              firstname: val
+          });
+      }
+  }
+
+  const textUpdateSecondNameChange = (val) => {
+      if( val.length !== 0 ) {
+          setData({
+              ...data,
+              lastname: val
+          });
+      } else {
+          setData({
+              ...data,
+              lastname: val
+          });
+      }
+  }
+
+  const textUpdateAdressStreetChange = (val) => {
+      if( val.length !== 0 ) {
+          setData({
+              ...data,
+              adress_street: val
+          });
+      } else {
+          setData({
+              ...data,
+              adress_street: val
+          });
+      }
+  }
+
+  const textUpdatePhoneNumberChange = (val) => {
+      if( val.length !== 0 ) {
+          setData({
+              ...data,
+              phone_number: val
+          });
+      } else {
+          setData({
+              ...data,
+              phone_number: val
+          });
+      }
+  }
+
+  const textUpdateSexChange = (val) => {
+      if( val.length !== 0 ) {
+          setData({
+              ...data,
+              sex: val
+          });
+      } else {
+          setData({
+              ...data,
+              sex: val
+          });
+      }
+  }
+
+  const [currentDate, setCurrentDate] = React.useState('');
+
+  React.useEffect(() => {
+    var date = new Date().getDate(); //Current Date
+    var month = new Date().getMonth() + 1; //Current Month
+    var year = new Date().getFullYear(); //Current Year
+    var hours = new Date().getHours(); //Current Hours
+    var min = new Date().getMinutes(); //Current Minutes
+    var sec = new Date().getSeconds(); //Current Seconds
+    setCurrentDate(
+      date + '/' + month + '/' + year
+      + ' ' + hours + ':' + min + ':' + sec
+    );
+  }, []);
+
+
+  const editProfileHandler = async (firstname, lastname, adress_street, phone_number, sex) => {
+
+    const id = user.uid;
+    const updated_at = currentDate;
+    await auth.editUser(data.firstname, data.lastname, data.adress_street, data.phone_number, data.sex, updated_at, id);
+        console.log("test");
+        navigation.navigate('root');
+
+
+}
+
+  const renderInner = () => (
     <View style={styles.panel}>
       <View style={{alignItems: 'center'}}>
         <Text style={styles.panelTitle}>Upload Photo</Text>
@@ -64,13 +236,13 @@ const EditProfileScreen = () => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.panelButton}
-        onPress={() => this.bs.current.snapTo(1)}>
+        onPress={() => bs.current.snapTo(1)}>
         <Text style={styles.panelButtonTitle}>Cancel</Text>
       </TouchableOpacity>
     </View>
   );
 
-  renderHeader = () => (
+  const renderHeader = () => (
     <View style={styles.header}>
       <View style={styles.panelHeader}>
         <View style={styles.panelHandle} />
@@ -78,25 +250,50 @@ const EditProfileScreen = () => {
     </View>
   );
 
-  bs = React.createRef();
+
   fall = new Animated.Value(1);
+
+  /* test */
+  const [myimage, setmyImage] = React.useState(null);
+
+  React.useEffect(() => {
+    (async () => {
+      if (Platform.OS !== 'web') {
+        const { status } = await ImagePickerExpo.requestCameraRollPermissionsAsync();
+        if (status !== 'granted') {
+          alert('Sorry, we need camera roll permissions to make this work!');
+        }
+      }
+    })();
+  }, []);
+
+  const pickImage = async () => {
+    let result = await ImagePickerExpo.launchImageLibraryAsync({
+      mediaTypes: ImagePickerExpo.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setmyImage(result.uri);
+    }
+  };
+  //CameraRoll.saveToCameraRoll((await Expo.ImagePicker.launchCameraAsync({})).uri);
 
   return (
     <View style={styles.container}>
-      <BottomSheet
-        ref={this.bs}
-        snapPoints={[330, 0]}
-        renderContent={this.renderInner}
-        renderHeader={this.renderHeader}
-        initialSnap={1}
-        callbackNode={this.fall}
-        enabledGestureInteraction={true}
-      />
+    {mycurrentUser ? (mycurrentUser.map((value) => {
+      return (
+        <View key={value.id}>
+
       <Animated.View style={{margin: 20,
-        opacity: Animated.add(0.1, Animated.multiply(this.fall, 1.0)),
+        opacity: Animated.add(0.1, Animated.multiply(fall, 1.0)),
     }}>
         <View style={{alignItems: 'center'}}>
-          <TouchableOpacity onPress={() => this.bs.current.snapTo(0)}>
+          <TouchableOpacity onPress={pickImage}>
             <View
               style={{
                 height: 100,
@@ -107,7 +304,7 @@ const EditProfileScreen = () => {
               }}>
               <ImageBackground
                 source={{
-                  uri: image,
+                  uri: myimage,
                 }}
                 style={{height: 100, width: 100}}
                 imageStyle={{borderRadius: 15}}>
@@ -118,15 +315,15 @@ const EditProfileScreen = () => {
                     alignItems: 'center',
                   }}>
                   <Icon
-                    name="camera"
-                    size={35}
-                    color="#fff"
+                    name="account-edit"
+                    size={85}
+                    color="#FF6347"
                     style={{
                       opacity: 0.7,
                       alignItems: 'center',
                       justifyContent: 'center',
                       borderWidth: 1,
-                      borderColor: '#fff',
+                      borderColor: '#FF6347',
                       borderRadius: 10,
                     }}
                   />
@@ -135,7 +332,7 @@ const EditProfileScreen = () => {
             </View>
           </TouchableOpacity>
           <Text style={{marginTop: 10, fontSize: 18, fontWeight: 'bold'}}>
-            John Doe
+            {value.firstname} {value.lastname}
           </Text>
         </View>
 
@@ -145,6 +342,8 @@ const EditProfileScreen = () => {
             placeholder="First Name"
             placeholderTextColor="#666666"
             autoCorrect={false}
+            value={value.firstname}
+            onChangeText={(val) => textUpdateNameChange(val)}
             style={[
               styles.textInput,
               {
@@ -159,6 +358,24 @@ const EditProfileScreen = () => {
             placeholder="Last Name"
             placeholderTextColor="#666666"
             autoCorrect={false}
+            value={value.lastname}
+            onChangeText={(val) => textUpdateSecondNameChange(val)}
+            style={[
+              styles.textInput,
+              {
+                color: colors.text,
+              },
+            ]}
+          />
+        </View>
+        <View style={styles.action}>
+          <Icon name="map-marker-outline" color={colors.text} size={20} />
+          <TextInput
+            placeholder="Adresse/Rue"
+            placeholderTextColor="#666666"
+            autoCorrect={false}
+            value={value.adress_street}
+            onChangeText={(val) => textUpdateAdressStreetChange(val)}
             style={[
               styles.textInput,
               {
@@ -174,6 +391,8 @@ const EditProfileScreen = () => {
             placeholderTextColor="#666666"
             keyboardType="number-pad"
             autoCorrect={false}
+            value={value.phone_number}
+            onChangeText={(val) => textUpdatePhoneNumberChange(val)}
             style={[
               styles.textInput,
               {
@@ -183,52 +402,52 @@ const EditProfileScreen = () => {
           />
         </View>
         <View style={styles.action}>
+          <Icon name="account-multiple" color={colors.text} size={20} />
+          <Picker
+            selectedValue={selectedValue}
+            style={{ height: 50, width: 150 }}
+            name="sex"
+            onValueChange={(itemValue) => setSelectedValue(itemValue)}
+            onChangeText={(val) => textUpdateSexChange(val)}
+          >
+            <Picker.Item label="Masculin" value="masculin" />
+            <Picker.Item label="Feminin" value="feminin" />
+          </Picker>
+        </View>
+        <View style={styles.action}>
           <FontAwesome name="envelope-o" color={colors.text} size={20} />
-          <TextInput
+          {/*<TextInput
             placeholder="Email"
             placeholderTextColor="#666666"
             keyboardType="email-address"
             autoCorrect={false}
+            value={value.email}
             style={[
               styles.textInput,
               {
                 color: colors.text,
               },
             ]}
-          />
+          />*/}
+          <Text style={[
+            styles.textInput,
+            {
+              color: colors.text,
+            },
+          ]}>{value.email}</Text>
         </View>
-        <View style={styles.action}>
-          <FontAwesome name="globe" color={colors.text} size={20} />
-          <TextInput
-            placeholder="Country"
-            placeholderTextColor="#666666"
-            autoCorrect={false}
-            style={[
-              styles.textInput,
-              {
-                color: colors.text,
-              },
-            ]}
-          />
-        </View>
-        <View style={styles.action}>
-          <Icon name="map-marker-outline" color={colors.text} size={20} />
-          <TextInput
-            placeholder="City"
-            placeholderTextColor="#666666"
-            autoCorrect={false}
-            style={[
-              styles.textInput,
-              {
-                color: colors.text,
-              },
-            ]}
-          />
-        </View>
-        <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
-          <Text style={styles.panelButtonTitle}>Submit</Text>
+
+
+        <TouchableOpacity style={styles.commandButton} onPress={() => { editProfileHandler(data.firstname, data.lastname, data.adress_street, data.phone_number, data.sex)}}>
+          <Text style={styles.panelButtonTitle}>Modifier</Text>
         </TouchableOpacity>
       </Animated.View>
+      </View>
+        );
+          })) : (
+          <div> Aucune donnée</div>
+        )
+      }
     </View>
   );
 };

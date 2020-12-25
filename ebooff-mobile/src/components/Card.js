@@ -1,11 +1,12 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity, TextInput} from 'react-native';
 
 import StarRating from './StarRating';
 
 const Card = ({itemData, onPress}) => {
   return (
     <TouchableOpacity onPress={onPress}>
+
       <View style={styles.card}>
         <View style={styles.cardImgWrapper}>
           <Image
@@ -27,7 +28,7 @@ const Card = ({itemData, onPress}) => {
 export default Card;
 
 const styles = StyleSheet.create({
-  card: {
+  /*card: {
     height: 100,
     marginVertical: 10,
     flexDirection: 'row',
@@ -64,5 +65,44 @@ const styles = StyleSheet.create({
   cardDetails: {
     fontSize: 12,
     color: '#444',
+  },*/
+  card: {
+    height: 250,
+    marginVertical: 10,
+    flexDirection: 'column',
+    shadowColor: '#999',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
   },
+  cardImgWrapper: {
+    flex: 2.5,
+  },
+  cardImg: {
+    height: '100%',
+    width: '100%',
+    alignSelf: 'center',
+    borderRadius: 8,
+    borderBottomRightRadius: 0,
+    borderBottomLeftRadius: 0,
+  },
+  cardInfo: {
+    flex: 2,
+    padding: 10,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderLeftWidth: 0,
+    borderBottomRightRadius: 8,
+    borderBottomLeftRadius: 8,
+    backgroundColor: '#fff',
+  },
+  cardTitle: {
+    fontWeight: 'bold',
+  },
+  cardDetails: {
+    fontSize: 12,
+    color: '#444',
+  },
+
 });

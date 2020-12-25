@@ -17,6 +17,12 @@ import { useTheme } from '@react-navigation/native';
 const SplashScreen = ({navigation}) => {
     const { colors } = useTheme();
 
+    React.useEffect(() => {
+      setTimeout(() => {
+        navigation.navigate('Signin')
+      }, 3000);
+    }, [])
+
     return (
       <View style={styles.container}>
           <StatusBar backgroundColor='#009387' barStyle="light-content"/>
@@ -29,47 +35,7 @@ const SplashScreen = ({navigation}) => {
             resizeMode="stretch"
             />
         </View>
-        <Animatable.View
-            style={[styles.footer, {
-                backgroundColor: colors.background
-            }]}
-            animation="fadeInUpBig"
-        >
-            <Text style={[styles.title, {
-                color: colors.text
-            }]}>Bienvenue sur ebooff!</Text>
-            <Text style={styles.text}>Connexion/Inscription</Text>
-            <View style={styles.button}>
-            <TouchableOpacity onPress={()=>navigation.navigate('Signin')}>
-                <LinearGradient
-                    colors={['#08d4c4', '#01ab9d']}
-                    style={styles.signIn}
-                >
-                    <Text style={styles.textSign}>Connexion</Text>
-                    <MaterialIcons
-                        name="navigate-next"
-                        color="#fff"
-                        size={20}
-                    />
-                </LinearGradient>
-            </TouchableOpacity>
-            </View>
-            <View style={styles.button}>
-            <TouchableOpacity onPress={()=>navigation.navigate('Signup')}>
-                <LinearGradient
-                    colors={['#08d4c4', '#01ab9d']}
-                    style={styles.signIn}
-                >
-                    <Text style={styles.textSign}>Inscription</Text>
-                    <MaterialIcons
-                        name="navigate-next"
-                        color="#fff"
-                        size={20}
-                    />
-                </LinearGradient>
-            </TouchableOpacity>
-            </View>
-        </Animatable.View>
+        
       </View>
     );
 };

@@ -24,14 +24,14 @@ export default function BottomTabNavigator({ navigation, route }) {
           ),
         }}/>
      <Tab.Screen name="Specialities" component={SpecialitiesScreen} options={{
-          tabBarLabel: 'Explore',
+          tabBarLabel: 'Research',
           tabBarColor: '#d02860',
           tabBarIcon: ({ color }) => (
             <Icon name="ios-aperture" color={color} size={26} />
           ),
         }}/>
      <Tab.Screen name="Commands" component={CommandsScreen} options={{
-          tabBarLabel: 'Updates',
+          tabBarLabel: 'Map',
           tabBarColor: '#1f65ff',
           tabBarIcon: ({ color }) => (
             <Icon name="ios-notifications" color={color} size={26} />

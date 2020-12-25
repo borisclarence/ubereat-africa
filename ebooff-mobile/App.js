@@ -16,6 +16,8 @@ import useLinking from './src/navigation/useLinking';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
+import { Font } from 'expo';
+
 import BottomTabNavigator from './src/navigation/BottomTabNavigator';
 
 import SigninScreen from './src/screens/SigninScreen';
@@ -25,13 +27,15 @@ import SpecialitiesScreen from './src/screens/SpecialitiesScreen';
 import CommandsScreen from './src/screens/CommandsScreen';*/
 import LocalizationScreen from './src/screens/LocalizationScreen';
 import RatingScreen from './src/screens/RatingScreen';
-//import ProfileScreen from './src/screens/ProfileScreen';
+import EditProfileScreen from './src/screens/EditProfileScreen';
 
 import { AuthContext } from './src/context/user-context';
 
 import AsyncStorage from '@react-native-community/async-storage';
 //import * as Splashs from 'expo-splash-screen';
 import SplashScreen from './src/screens/SplashScreen';
+
+import CardItemDetails from './src/screens/CardItemDetails';
 
 
 const Stack = createStackNavigator();
@@ -65,7 +69,7 @@ export default function App(props) {
    const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme;
 
 
-   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
+  const [isLoadingComplete, setLoadingComplete] = React.useState(false);
     const [initialNavigationState, setInitialNavigationState] = React.useState();
     const containerRef = React.useRef();
     const { getInitialState } = useLinking(containerRef);
@@ -105,7 +109,21 @@ export default function App(props) {
       return null;
     }
 
+    /*const {user, setUser} = React.useContext(AuthContext);
+    const [isLoadingComplete, setLoadingComplete] = React.useState(false);
+    const [initializing, setInitializing] = React.useState(true);
 
+    const onAuthStateChanged = (user) => {
+      setUser(user);
+      if(initializing) setInitializing(false);
+    }
+
+    React.useEffect(() => {
+      const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+      return subscriber;
+    }, []);
+
+    if(initializing) return null;*/
 
   return (
     <AuthContext>
@@ -132,6 +150,42 @@ export default function App(props) {
                 }}
                  />
                 <Stack.Screen name="Signup" component={SignupScreen}
+                options={{
+                  title: '',
+                  headerStyle: {
+                    backgroundColor: '#81101A',
+                  },
+                  headerTintColor: '#fff',
+                  headerTitleStyle: {
+                    fontWeight: 'bold',
+                  },
+                }}
+                />
+                <Stack.Screen name="root" component={BottomTabNavigator}
+                options={{
+                  title: '',
+                  headerStyle: {
+                    backgroundColor: '#81101A',
+                  },
+                  headerTintColor: '#fff',
+                  headerTitleStyle: {
+                    fontWeight: 'bold',
+                  },
+                }}
+                />
+                <Stack.Screen name="EditProfil" component={EditProfileScreen}
+                options={{
+                  title: '',
+                  headerStyle: {
+                    backgroundColor: '#81101A',
+                  },
+                  headerTintColor: '#fff',
+                  headerTitleStyle: {
+                    fontWeight: 'bold',
+                  },
+                }}
+                />
+                <Stack.Screen name="CardItemDetails" component={CardItemDetails}
                 options={{
                   title: '',
                   headerStyle: {

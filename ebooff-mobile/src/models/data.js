@@ -1,9 +1,11 @@
 const Images = [
-  {image: require('../assets/banners/food-banner1.jpg')},
-  {image: require('../assets/banners/food-banner2.jpg')},
-  {image: require('../assets/banners/food-banner3.jpg')},
-  {image: require('../assets/banners/food-banner4.jpg')},
-  {image: require('../assets/banners/food-banner5.jpg')},
+  {image: require('../../assets/restaurants/africain/thiephouse/poulet-yassa-plate.jpeg')},
+  {image: require('../../assets/restaurants/asiatique/bol-chine/img-bolchine-resto.jpg')},
+  {image: require('../../assets/restaurants/africain/saucetartare-africa/brochette-poisson-plate.jpg')},
+  {image: require('../../assets/restaurants/asiatique/transushi/img-transushi-resto.jpeg')},
+  {image: require('../../assets/restaurants/burger/burgerking/wrap-crispy-chicken.jpg')},
+  {image: require('../../assets/restaurants/tacos/tacos-and-burger/tacos-kebab-plate.jpg')},
+  {image: require('../../assets/restaurants/burger/fais-chez-wam/cheese-burger-poulet.jpeg')},
 ];
 
 export const data = [
@@ -13,14 +15,16 @@ export const data = [
       latitude: 22.6293867,
       longitude: 88.4354486,
     },
-    title: 'Amazing Food Place',
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est metus, gravida vel ex volutpat, posuere euismod tortor. Pellentesque tincidunt, mi ac varius blandit, quam orci dignissim risus, vitae rutrum orci urna ut neque.
-
-      Pellentesque condimentum ut libero id blandit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.`,
+    title: 'ThiepHouse',
+    description: `Heure de début: 09h, heure de fermeture: 23h 2500F à la livraison`,
     image: Images[0].image,
     rating: 4,
     reviews: 99,
-    categories: ['Restaurant', 'Hotel', 'Dineout'],
+    categories: ['Africain'],
+    productone: {
+      name: 'plate',
+      price: '1500',
+    },
   },
   {
     id: '2',
@@ -28,14 +32,16 @@ export const data = [
       latitude: 22.6345648,
       longitude: 88.4377279,
     },
-    title: 'Second Amazing Food Place',
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est metus, gravida vel ex volutpat, posuere euismod tortor. Pellentesque tincidunt, mi ac varius blandit, quam orci dignissim risus, vitae rutrum orci urna ut neque.
-
-      Pellentesque condimentum ut libero id blandit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.`,
+    title: 'Bol-Chine',
+    description: `Heure de début: 09h, heure de fermeture: 23h 2500F à la livraison`,
     image: Images[1].image,
     rating: 5,
     reviews: 102,
-    categories: ['Restaurant', 'Fastfood Center', 'Snacks Corner'],
+    categories: ['Asiatique'],
+    productone: {
+      name: 'plate',
+      price: '1500',
+    },
   },
   {
     id: '3',
@@ -43,14 +49,16 @@ export const data = [
       latitude: 22.6281662,
       longitude: 88.4410113,
     },
-    title: 'Third Amazing Food Place',
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est metus, gravida vel ex volutpat, posuere euismod tortor. Pellentesque tincidunt, mi ac varius blandit, quam orci dignissim risus, vitae rutrum orci urna ut neque.
-
-      Pellentesque condimentum ut libero id blandit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.`,
+    title: 'Saucetartare-Africa',
+    description: `Heure de début: 09h, heure de fermeture: 23h 2500F à la livraison`,
     image: Images[2].image,
     rating: 3,
     reviews: 220,
-    categories: ['Restaurant', 'Hotel', 'Dineout'],
+    categories: ['Africain'],
+    productone: {
+      name: 'plate',
+      price: '1500',
+    },
   },
   {
     id: '4',
@@ -58,14 +66,16 @@ export const data = [
       latitude: 22.6341137,
       longitude: 88.4497463,
     },
-    title: 'Fourth Amazing Food Place',
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est metus, gravida vel ex volutpat, posuere euismod tortor. Pellentesque tincidunt, mi ac varius blandit, quam orci dignissim risus, vitae rutrum orci urna ut neque.
-
-      Pellentesque condimentum ut libero id blandit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.`,
+    title: 'Transushi',
+    description: `Heure de début: 09h, heure de fermeture: 23h 2500F à la livraison`,
     image: Images[3].image,
     rating: 4,
     reviews: 48,
-    categories: ['Restaurant', 'Fastfood Center', 'Snacks Corner'],
+    categories: ['Asiatique'],
+    productone: {
+      name: 'plate',
+      price: '1500',
+    },
   },
   {
     id: '5',
@@ -73,14 +83,16 @@ export const data = [
       latitude: 22.6292757,
       longitude: 88.444781,
     },
-    title: 'Fifth Amazing Food Place',
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est metus, gravida vel ex volutpat, posuere euismod tortor. Pellentesque tincidunt, mi ac varius blandit, quam orci dignissim risus, vitae rutrum orci urna ut neque.
-
-      Pellentesque condimentum ut libero id blandit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.`,
+    title: 'Burgerking',
+    description: `Heure de début: 09h, heure de fermeture: 23h 2500F à la livraison`,
     image: Images[4].image,
     rating: 4,
     reviews: 178,
-    categories: ['Restaurant', 'Hotel', 'Dineout'],
+    categories: ['Burger'],
+    productone: {
+      name: 'plate',
+      price: '1500',
+    },
   },
   {
     id: '6',
@@ -88,14 +100,16 @@ export const data = [
       latitude: 22.6293867,
       longitude: 88.4354486,
     },
-    title: 'Amazing Food Place',
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est metus, gravida vel ex volutpat, posuere euismod tortor. Pellentesque tincidunt, mi ac varius blandit, quam orci dignissim risus, vitae rutrum orci urna ut neque.
-
-      Pellentesque condimentum ut libero id blandit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.`,
+    title: 'Tacos-And-Burger',
+    description: `Heure de début: 09h, heure de fermeture: 23h 2500F à la livraison`,
     image: Images[0].image,
     rating: 4,
     reviews: 99,
-    categories: ['Restaurant', 'Hotel', 'Dineout'],
+    categories: ['Tacos'],
+    productone: {
+      name: 'plate',
+      price: '1500',
+    },
   },
   {
     id: '7',
@@ -103,13 +117,15 @@ export const data = [
       latitude: 22.6345648,
       longitude: 88.4377279,
     },
-    title: 'Second Amazing Food Place',
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est metus, gravida vel ex volutpat, posuere euismod tortor. Pellentesque tincidunt, mi ac varius blandit, quam orci dignissim risus, vitae rutrum orci urna ut neque.
-
-      Pellentesque condimentum ut libero id blandit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.`,
+    title: 'Fais-Chez-Wam',
+    description: `2500F à la livraison`,
     image: Images[1].image,
     rating: 5,
     reviews: 102,
-    categories: ['Restaurant', 'Fastfood Center', 'Snacks Corner'],
+    categories: ['Burger'],
+    productone: {
+      name: 'plate',
+      price: '1500',
+    },
   },
 ];

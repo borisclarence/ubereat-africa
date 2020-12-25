@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import firebase from './Firebase';
 import 'firebase/auth';
 
-const db = firebase.firestore();
+export const db = firebase.firestore();
 
 const appContext = createContext();
 
@@ -34,7 +34,7 @@ function useProvideAuth() {
         adress_street,
         phone_number,
         sex,
-        profil_id,
+        profil,
         email,
         password,
         state_user,
@@ -55,6 +55,49 @@ function useProvideAuth() {
     .then(() => {
       setUser(false);
     });
+
+    const editUSer = (firstname, lastname, adress_street, phone_number, sex, updated_at, id) => db.collection('User').update({
+
+    })
+
+  const currentUsr = () => firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      const docUser = db.collection('User').doc(user.uid);
+      let item = docUser.get();
+      let response = [];
+
+      docUser.get().then(function(item) {
+          if (item.exists) {
+
+              const selectedItem = {
+                id: item.id,
+                firstname: item.data().firstname,
+                lastname: item.data().lastname,
+                adress_street: item.data().adress_street,
+                sex: item.data().sex,
+                phone_number: item.data().phone_number,
+                picture: item.data().picture,
+                email:item.data().email
+              };
+              response.push(selectedItem);
+              console.log("Document data:", response);
+          } else {
+              // doc.data() will be undefined in this case
+              console.log("No such document!");
+          }
+      }).catch(function(error) {
+          console.log("Error getting document:", error);
+      });
+      response.push(selectedItem);
+      return response; //setUser(response);
+
+    } else {
+      // No user is signed in.
+      setUser(false);
+      return null;
+    }
+  });
 
   const Addusers = (name, surname, profil) => db.collection('User').add({
     name,
@@ -90,6 +133,7 @@ function useProvideAuth() {
     signup,
     Addusers,
     signout,
+    currentUsr
     // getUserProfile,
   };
 }

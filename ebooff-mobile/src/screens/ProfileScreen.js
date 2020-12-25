@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, SafeAreaView, StyleSheet} from 'react-native';
+import {View, SafeAreaView, StyleSheet, Alert} from 'react-native';
 import {
   Avatar,
   Title,
@@ -9,109 +9,178 @@ import {
 } from 'react-native-paper';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useAuth, db } from '../context/user-context';
+
+import * as ImagePickerExpo from 'expo-image-picker';
+import Constants from 'expo-constants';
 
 //import files from '../assets/filesBase64';
 
 //import Share from 'react-native-share';
 
-export default function ProfileScreen() {
-  const myCustomShare = async() => {
-  const shareOptions = {
-    message: 'Order your next meal from FoodFinder App. I\'ve already ordered more than 10 meals on it.',
-    url: files.appLogo,
-    // urls: [files.image1, files.image2]
+const userProfile = async (dataUser) => {
+  let response = [];
+
+    await  dataUser.get().then( (item) => {
+      if (item.exists) {
+
+          const selectedItem = {
+            id: item.id,
+            firstname: item.data().firstname,
+            lastname: item.data().lastname,
+            adress_street: item.data().adress_street,
+            sex: item.data().sex,
+            phone_number: item.data().phone_number,
+            picture: item.data().picture,
+            email:item.data().email
+          };
+          response.push(selectedItem);
+          console.log("Document data:", response);
+
+      } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+      }
+
+  }).catch(function(error) {
+      console.log("Error getting document:", error);
+  });
+  return response;
+}
+
+export default function ProfileScreen({navigation}) {
+      const myCustomShare = async() => {
+        const shareOptions = {
+          message: 'Order your next meal from FoodFinder App. I\'ve already ordered more than 10 meals on it.',
+          url: files.appLogo,
+          // urls: [files.image1, files.image2]
+        }
+
+        try {
+          const ShareResponse = await Share.open(shareOptions);
+          console.log(JSON.stringify(ShareResponse));
+        } catch(error) {
+          console.log('Error => ', error);
+        }
+    };
+
+  const [mycurrentUser, setMycurrentUser] = React.useState([]);
+
+  const auth = useAuth();
+  const user = auth.user;
+  const docUser = db.collection('User').doc(user.uid);
+  let myResponse = [];
+
+
+
+
+  React.useEffect(() => {
+
+    const fetchData = async () => {
+      myResponse = await userProfile(docUser);
+      setMycurrentUser(myResponse)
+      console.log(myResponse)
+    };
+    fetchData();
+
+  }, []);
+
+  const logOut = async () => {
+    await auth.signout();
+    navigation.navigate('Signin');
   }
 
-  try {
-    const ShareResponse = await Share.open(shareOptions);
-    console.log(JSON.stringify(ShareResponse));
-  } catch(error) {
-    console.log('Error => ', error);
-  }
-};
+  const [myimage, setmyImage] = React.useState(null);
+
+  React.useEffect(() => {
+    (async () => {
+      if (Platform.OS !== 'web') {
+        const { status } = await ImagePickerExpo.requestCameraRollPermissionsAsync();
+        if (status !== 'granted') {
+          alert('Sorry, we need camera roll permissions to make this work!');
+        }
+      }
+    })();
+  }, []);
+
+  const pickImage = async () => {
+    let result = await ImagePickerExpo.launchImageLibraryAsync({
+      mediaTypes: ImagePickerExpo.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setmyImage(result.uri);
+    }
+  };
 
 return (
   <SafeAreaView style={styles.container}>
-
+  {mycurrentUser ? (mycurrentUser.map((value) => {
+    //console.log(value)
+  return (
+    <View key={value.id}>
     <View style={styles.userInfoSection}>
       <View style={{flexDirection: 'row', marginTop: 15}}>
         <Avatar.Image
           source={{
-            uri: 'https://api.adorable.io/avatars/80/abott@adorable.png',
+            uri: myimage,
           }}
-          size={80}
+          size={150}
         />
         <View style={{marginLeft: 20}}>
           <Title style={[styles.title, {
-            marginTop:15,
+            marginTop:75,
             marginBottom: 5,
-          }]}>John Doe</Title>
-          <Caption style={styles.caption}>@j_doe</Caption>
+          }]}>{value.firstname}</Title>
+          <Caption style={styles.caption}>{value.email}</Caption>
         </View>
       </View>
     </View>
 
     <View style={styles.userInfoSection}>
-      <View style={styles.row}>
-        <Icon name="map-marker-radius" color="#777777" size={20}/>
-        <Text style={{color:"#777777", marginLeft: 20}}>Kolkata, India</Text>
-      </View>
-      <View style={styles.row}>
-        <Icon name="phone" color="#777777" size={20}/>
-        <Text style={{color:"#777777", marginLeft: 20}}>+91-900000009</Text>
-      </View>
-      <View style={styles.row}>
-        <Icon name="email" color="#777777" size={20}/>
-        <Text style={{color:"#777777", marginLeft: 20}}>john_doe@email.com</Text>
-      </View>
-    </View>
-
-    <View style={styles.infoBoxWrapper}>
-        <View style={[styles.infoBox, {
-          borderRightColor: '#dddddd',
-          borderRightWidth: 1
-        }]}>
-          <Title>₹140.50</Title>
-          <Caption>Wallet</Caption>
-        </View>
-        <View style={styles.infoBox}>
-          <Title>12</Title>
-          <Caption>Orders</Caption>
-        </View>
+      <TouchableRipple onPress={() => { navigation.navigate('EditProfil') }} >
+        <Text style={{flexDirection: 'row', marginTop: 15, marginLeft: 55, fontSize: 30, color: '#de4f35'}}>Modifier Profil</Text>
+      </TouchableRipple>
     </View>
 
     <View style={styles.menuWrapper}>
-      <TouchableRipple onPress={() => {}}>
-        <View style={styles.menuItem}>
-          <Icon name="heart-outline" color="#FF6347" size={25}/>
-          <Text style={styles.menuItemText}>Your Favorites</Text>
-        </View>
-      </TouchableRipple>
-      <TouchableRipple onPress={() => {}}>
-        <View style={styles.menuItem}>
-          <Icon name="credit-card" color="#FF6347" size={25}/>
-          <Text style={styles.menuItemText}>Payment</Text>
-        </View>
-      </TouchableRipple>
+
       <TouchableRipple onPress={myCustomShare}>
         <View style={styles.menuItem}>
-          <Icon name="share-outline" color="#FF6347" size={25}/>
-          <Text style={styles.menuItemText}>Tell Your Friends</Text>
+          <Icon name="map-marker-radius" color="#de4f35" size={40}/>
+          <Text style={{color:"#777777", marginLeft: 20}}>Adresse: {value.adress_street}</Text>
         </View>
       </TouchableRipple>
       <TouchableRipple onPress={() => {}}>
         <View style={styles.menuItem}>
-          <Icon name="account-check-outline" color="#FF6347" size={25}/>
-          <Text style={styles.menuItemText}>Support</Text>
+          <Icon name="phone" color="#de4f35" size={40}/>
+          <Text style={{color:"#777777", marginLeft: 20}}>Téléphone: {value.phone_number}</Text>
         </View>
       </TouchableRipple>
       <TouchableRipple onPress={() => {}}>
         <View style={styles.menuItem}>
-          <Icon name="settings-outline" color="#FF6347" size={25}/>
-          <Text style={styles.menuItemText}>Settings</Text>
+          <Icon name="account" color="#de4f35" size={40}/>
+          <Text style={{color:"#777777", marginLeft: 20}}>Sex: {value.sex}</Text>
+        </View>
+      </TouchableRipple>
+      <TouchableRipple onPress={() => { logOut() }}>
+        <View style={styles.menuItem}>
+          <Icon name="power-settings" color="#de4f35" size={40}/>
+          <Text style={{color:"#777777", marginLeft: 20}}>Se déconnecter</Text>
         </View>
       </TouchableRipple>
     </View>
+    </View>
+      );
+        })) : (
+        <div> Aucune donnée</div>
+      )
+    }
   </SafeAreaView>
 );
 }
@@ -152,7 +221,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   menuWrapper: {
-    marginTop: 10,
+    marginTop: 40,
   },
   menuItem: {
     flexDirection: 'row',

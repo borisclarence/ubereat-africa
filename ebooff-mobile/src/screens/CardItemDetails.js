@@ -49,7 +49,7 @@ const CardItemDetails = ({route}) => {
           onHide={() => navTitleView.current.fadeInUp(200)}
           onDisplay={() => navTitleView.current.fadeOut(100)}>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={styles.title}>Overview</Text>
+            <Text style={styles.title}>Avis</Text>
             <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
               <FontAwesome name="star" size={16} color="#FF6347" />
               <Text style={{marginHorizontal: 2}}>{itemData.rating}</Text>
@@ -84,7 +84,7 @@ const CardItemDetails = ({route}) => {
             }}>
             <MapView.Marker
               coordinate={itemData.coordinate}
-              image={require('../assets/map_marker.png')}
+              image={require('../../assets/map_marker.png')}
             />
           </MapView>
         </View>
