@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>ebooff-web</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style type="text/css">
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html,
+    body,
+    header,
+    .view {
+      height: 100%;
+    }
+
+    @media (max-width: 740px) {
+      html,
+      body,
+      header,
+      .view {
+        height: 1000px;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+      html,
+      body,
+      header,
+      .view {
+        height: 650px;
+      }
+    }
+    @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+    .darknight {
+      background-color: #1C2331;
+    }
+  </style>
+</head>
+
+<body>
+  <br>
+  <br>
+  <div class="text-center">
+      <!--Blue-grey-->
+      <button type="button" class="btn btn-grey grey text-dark font-weight-bold z-depth-1 text-initial lighten-3" data-toggle="modal" data-target="#newCard">J'ai pris mes mesures avec TOP</button>
+  </div>
+
+
+  <div class="text-center">
+
+
+    <div class="modal fade" id="newCard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-sm" role="document" >
+        <div class="modal-content" style="border-radius: 15px; width: 125%" >
+          <!--div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>style="padding-left: 25%; padding-right: 15%; "
+            </button>
+          </div-->
+          <div class="modal-body">
+            <div style="padding-top: 20%; padding-bottom: 15%;">
+
+
+                <h2 style="padding-bottom: 7%; font-family: 'Baloo 2', cursive; letter-spacing: 10px; font-size: 40px; font-weight: bold"> TOP </h2>
+
+                <p class="font-weight-bold grey-text" style="padding-bottom: 7%;padding-left: 10%;padding-right: 10%;font-family: 'Baloo 2', cursive; font-size: 70%">Thirty One c'est la solution vous permettant de prendre vos mesures grâce à la caméra de votre smartphone</p>
+                <button type="button" class="btn btn-secondary btn-rounded font-weight-bold" style="padding-bottom: 5%; border-radius: 15px;font-family: 'Baloo 2', cursive; background-color: #04052e!important;" data-dismiss="modal">Télécharger l'application</button>
+                <button type="button" class="btn btn-primary btn-rounded font-weight-bold" style="width: 80%;border-radius: 15px; font-family: 'Baloo 2', cursive;background-color: #f44242!important;" onclick="addLogin()">Me connecter</button>
+
+            </div>
+          </div>
+          <!--div class="modal-footer">
+
+          </div-->
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- test login -->
+
+    <div class="modal fade" id="callLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-sm" role="document" >
+        <div class="modal-content" style="border-radius: 15px; width: 125%" >
+          <!--div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>style="padding-left: 25%; padding-right: 15%; "
+            </button>
+          </div-->
+          <div class="modal-body">
+            <div style="padding-top: 10%; padding-bottom: 5%;">
+
+
+                <h2 style="padding-bottom: 0%; font-family: 'Baloo 2', cursive; letter-spacing: 10px; font-size: 40px; font-weight: bold"> TOP </h2>
+
+                <p class="font-weight-bold grey-text" style="padding-bottom: 10%;padding-left: 10%;padding-right: 10%;font-family: 'Baloo 2', cursive; font-size: 70%">Thirty One c'est la solution vous permettant de prendre vos mesures grâce à la caméra de votre smartphone</p>
+
+                <!-- Form -->
+                <form class="text-center" style="color: #757575; padding-left: 10%;padding-right: 10%;" action="#!">
+                  <!-- E-mail -->
+                  <div class="md-form mt-0">
+                      <input type="email" id="materialRegisterFormEmail" class="form-control">
+                      <label for="materialRegisterFormEmail" style="font-family: 'Baloo 2', cursive; font-weight: bold; color: black">Adresse mail</label>
+                  </div>
+
+                  <!-- Password -->
+                  <div class="md-form">
+                      <input type="password" id="materialRegisterFormPassword" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock">
+                      <label for="materialRegisterFormPassword" style="font-family: 'Baloo 2', cursive; font-weight: bold;  color: black">Mot de passe</label>
+                  </div>
+                  <button type="button" class="btn btn-primary btn-rounded font-weight-bold" style="width: 95%;border-radius: 15px; font-family: 'Baloo 2', cursive;background-color: #f44242!important;" onclick="myProfile()">Me connecter</button>
+                </form>
+      <!-- Form -->
+            </div>
+          </div>
+          <!--div class="modal-footer">
+
+          </div-->
+        </div>
+      </div>
+    </div>
+
+    <!--list Profile-->
+    <div class="modal fade" id="callProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-sm" role="document" >
+        <div class="modal-content" style="border-radius: 15px; width: 125%" >
+          <!--div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>style="padding-left: 25%; padding-right: 15%; "
+            </button>
+          </div-->
+          <div class="modal-body">
+            <div style="padding-top: 10%; padding-bottom: 5%;">
+
+
+                <h2 style="padding-bottom: 0%; font-family: 'Baloo 2', cursive; letter-spacing: 10px; font-size: 40px; font-weight: bold"> TOP </h2>
+
+                <p class="font-weight-bold grey-text" style="padding-bottom: 10%;padding-left: 10%;padding-right: 10%;font-family: 'Baloo 2', cursive; font-size: 70%">Thirty One c'est la solution vous permettant de prendre vos mesures grâce à la caméra de votre smartphone</p>
+
+
+                <!--Carousel Wrapper-->
+                  <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+                    <!--Controls-->
+                    <div class="controls-top">
+                      <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+                      <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
+                          class="fas fa-chevron-right"></i></a>
+                    </div>
+                    <!--/.Controls-->
+
+                    <!--Slides-->
+                    <div class="carousel-inner" role="listbox">
+
+                      <!--First slide-->
+                      <div class="carousel-item active">
+
+                        <div class="col-md-12">
+                          <div class="card mb-2 red lighten-4" style="border-radius: 15px; width: 100%">
+                            <div class="card-body">
+                              <h4 class="card-title mb-4 text-white" ><img style="width: 25%; float: left" src="https://api.thirty-one.fr/profiles/male/01.svg" /> <div style="font-family: 'Baloo 2', cursive;">Florian</div></h4>
+                              <br>
+                              <p class="card-text mt-4 font-weight-bold text-white" style="font-family: 'Baloo 2', cursive;"> <span style="text-align: left">170cm </span>   <span style="text-align: right">60kg</span> </p>
+
+                              <p class="card-text mt-4 text-white font-weight-bold" style="font-family: 'Baloo 2', cursive;">Réalisé par TOP</p>
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                      <!--/.First slide-->
+
+                      <!--Second slide-->
+                      <div class="carousel-item">
+
+                        <div class="col-md-12">
+                          <div class="card mb-2 red lighten-3" style="border-radius: 15px; width: 100%">
+                            <div class="card-body">
+                              <h4 class="card-title mb-4 text-white"><img style="width: 25%; float: left" src="https://api.thirty-one.fr/profiles/male/02.svg" /> <div style="font-family: 'Baloo 2', cursive;">Fary</div></h4>
+                              <br>
+                              <p class="card-text mt-4 font-weight-bold text-white" style="font-family: 'Baloo 2', cursive;"> <span style="text-align: left">170cm </span>   <span style="text-align: right">60kg</span> </p>
+
+                              <p class="card-text mt-4 text-white font-weight-bold" style="font-family: 'Baloo 2', cursive;">Réalisé par TOP</p>
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                      <!--/.Second slide-->
+
+                      <!--Third slide-->
+                      <div class="carousel-item">
+
+                        <div class="col-md-12">
+                          <div class="card mb-2 red lighten-2" style="border-radius: 15px; width: 100%">
+                            <div class="card-body">
+                              <h4 class="card-title mb-4 text-white"><img style="width: 25%; float: left" src="https://api.thirty-one.fr/profiles/male/03.svg" /> <div style="font-family: 'Baloo 2', cursive;">Julie</div></h4>
+                              <br>
+                              <h4 class="card-text mt-4 font-weight-bold text-white" style="font-family: 'Baloo 2', cursive;"> <span style="text-align: left">170cm </span>   <span style="text-align: right">60kg</span> </h4>
+
+                              <p class="card-text mt-4 text-white font-weight-bold" style="font-family: 'Baloo 2', cursive;">Réalisé par TOP</p>
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                      <!--/.Third slide-->
+
+                    </div>
+                    <!--/.Slides-->
+
+                  </div>
+                  <!--/.Carousel Wrapper-->
+
+
+            </div>
+          </div>
+          <!--div class="modal-footer">
+
+          </div-->
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+<!-- SCRIPTS -->
+<!-- JQuery -->
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="js/mdb.min.js"></script>
+<!-- Initializations -->
+<script type="text/javascript">
+  // Animations initialization
+  new WOW().init();
+</script>
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 500, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+</script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+<script type="text/javascript">
+  $( '#navbarSupportedContent .navbar-nav a' ).on( 'click', function () {
+      $( '#navbarSupportedContent .navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
+      $( this ).parent( 'li' ).addClass( 'active' );
+  });
+</script>
+<script type="text/javascript">
+  function addLogin() {
+    $('#newCard').modal('hide');
+    $('#callLogin').modal('show');
+  }
+
+  function myProfile() {
+    $('#callLogin').modal('hide');
+    $('#callProfile').modal('show');
+  }
+</script>
+</body>
+
+</html>
