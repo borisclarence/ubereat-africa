@@ -30,7 +30,8 @@
       .ml6 {
         position: relative;
         font-weight: 900;
-        font-size: 3.3em;
+        /*font-size: 3.3em;*/
+        font-size:3vw;
         text-align: center;
       }
 
@@ -82,8 +83,8 @@
     <div class="container">
 
       <!-- Brand -->
-      <a class="navbar-brand" href="">
-        <strong><img src="img/e-chaplogo.jpeg" alt="" style="width:50px; height:50px;"/></strong>
+      <a class="navbar-brand" href="index.html">
+        <strong><img src="img/e-chaplogo.jpeg" alt="" style="width:50px; height:50px; border-radius:15px "/></strong>
       </a>
 
       <!-- Collapse -->
@@ -98,11 +99,11 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Accueil
+            <a class="nav-link" href="index.html"> <i class="fa fa-arrow-left"></i> Retour à la page d'accueil
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
+          <!--li class="nav-item">
             <a class="nav-link" href="index.html">A Propos</a>
           </li>
           <li class="nav-item">
@@ -116,7 +117,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="index.html">Contact</a>
-          </li>
+          </li-->
         </ul>
 
         <!-- Right -->
@@ -149,6 +150,69 @@
   </nav>
   <!-- Navbar -->
 
+  <!-- Full Page Intro -->
+  <div class="view full-page-intro" id="home" style="background-image: url('img/img-global-restofrench.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+    <!-- Mask & flexbox options-->
+    <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+      <!-- Content -->
+      <div class="container">
+
+        <!--Grid row-->
+        <div class="row wow fadeIn" style="margin-top:21%">
+
+
+
+          <!--Grid column-->
+          <div class="col-md-6 col-xl-5 mb-4">
+
+            <img src="img/dataweb_iphone5c_white_portrait.png" alt="" class="img-fluid">
+
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-6 mb-4 white-text text-center text-md-left">
+
+            <!--h4 class="display-4 font-weight-bold">Bienvenue sur e-chap</h4-->
+
+            <h1 class="ml6">
+              <span class="text-wrapper">
+                <span class="letters">Notre Blog e-chap</span>
+              </span>
+            </h1>
+
+            <hr class="hr-light">
+
+            <p>
+              <strong>L'actualité sur notre plateforme et nos restaurants partenaires.</strong>
+            </p>
+
+            <a target="_blank" href="#more" class="btn btn-red btn-rounded mx-0 btn-lg">
+              <i class="fas fa-book-open"></i>
+              Plus d'informations
+            </a>
+            <!--a target="_blank" href="https://play.google.com/store/" class="btn btn-red btn-rounded mx-0 btn-lg">
+              <i class="fab fa-apple"></i>
+              App Store
+            </a-->
+
+          </div>
+          <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+      </div>
+      <!-- Content -->
+
+    </div>
+    <!-- Mask & flexbox options-->
+
+  </div>
+  <!-- Full Page Intro -->
+
   <!--Main layout-->
     <main class="mt-5">
 
@@ -162,7 +226,7 @@
 
           <!-- Section heading -->
           <!--h2 class="text-center font-weight-bold mb-4 pb-2">Actualités</h2-->
-          <h1 class="ml6">
+          <h1 class="ml6" id="more">
             <span class="text-wrapper">
               <span class="letters">Actualités</span>
             </span>
@@ -170,10 +234,10 @@
 
 
           <!-- Section description -->
-          <p class="text-center mx-auto w-responsive mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur veniam.</p>
+          <!--p class="text-center mx-auto w-responsive mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p-->
 
           <!-- Grid row -->
-          <div class="row align-items-center">
+          <div class="row align-items-center" >
 
             <!-- Grid column -->
             <div class="col-lg-5 wow slideInLeft" data-wow-delay="0.03s">
@@ -181,7 +245,7 @@
               <!-- Featured image -->
               <!--div class="view overlay rounded z-depth-2 mb-lg-0 mb-4"-->
               <div>
-                <img class="img-fluid" src="img/notthingpasta.jpg" alt="Sample image">
+                <img class="img-fluid" src="img/brochette-poulet-marine.jpeg" alt="Sample image">
                 <a>
                   <div class="mask rgba-white-slight"></div>
                 </a>
@@ -195,17 +259,16 @@
 
               <!-- Category -->
               <a href="#!" class="green-text">
-                <h6 class="font-weight-bold mb-3"><i class="fas fa-utensils pr-2"></i>Food</h6>
+                <h6 class="font-weight-bold mb-3"><i class="fas fa-utensils pr-2"></i>Restaurant</h6>
               </a>
               <!-- Post title -->
-              <h4 class="font-weight-bold mb-3"><strong>Title of the news</strong></h4>
+              <h4 class="font-weight-bold mb-3"><strong>Le Tradi-Bistrot</strong></h4>
               <!-- Excerpt -->
-              <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
-                placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis debitis.</p>
+              <p class="w-responsive">Nous sommes heureux de collaborer avec E-Chap, ils nous facilitent les échanges avec nos clients et la prise en main de la version web est simple et efficace.</p>
               <!-- Post data -->
-              <p>by <a><strong>Carine Fox</strong></a>, 01/10/2020</p>
+              <p>by <a><strong>Emile Carmand</strong></a>, 01/10/2020</p>
               <!-- Read more button -->
-              <a class="btn btn-success btn-md btn-rounded mx-0">Read more</a>
+              <!--a class="btn btn-success btn-md btn-rounded mx-0">Read more</a-->
 
             </div>
             <!-- Grid column -->
@@ -230,7 +293,7 @@
               <!-- Featured image -->
               <!--div class="view overlay rounded z-depth-2 mb-lg-0 mb-4"-->
               <div>
-                <img class="img-fluid" src="img/plate-frite.jpg" alt="Sample image">
+                <img class="img-fluid" src="img/poulet-roti-fr.jpg" alt="Sample image">
                 <a>
                   <div class="mask rgba-white-slight"></div>
                 </a>
@@ -244,17 +307,16 @@
 
               <!-- Category -->
               <a href="#!" class="green-text">
-                <h6 class="font-weight-bold mb-3"><i class="fas fa-utensils pr-2"></i>Food</h6>
+                <h6 class="font-weight-bold mb-3"><i class="fas fa-utensils pr-2"></i>Restaurant</h6>
               </a>
               <!-- Post title -->
-              <h4 class="font-weight-bold mb-3"><strong>Title of the news</strong></h4>
+              <h4 class="font-weight-bold mb-3"><strong>O'Ptit Jambon</strong></h4>
               <!-- Excerpt -->
-              <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
-                placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis debitis.</p>
+              <p class="w-responsive">J'ai cherché partout une plateforme qui alliait restauration et livraison, j'ai été plus que satisfait.</p>
               <!-- Post data -->
-              <p>by <a><strong>Carine Fox</strong></a>, 19/08/2018</p>
+              <p>by <a><strong>Carine Ekoh</strong></a>, 19/07/2018</p>
               <!-- Read more button -->
-              <a class="btn btn-success btn-md btn-rounded mx-0">Read more</a>
+            <!--a class="btn btn-success btn-md btn-rounded mx-0">Read more</a-->
 
             </div>
             <!-- Grid column -->
