@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,6 +13,12 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Copyright from './Footer';
+import { useForm } from "react-hook-form";
+import Input from "@material-ui/core/Input";
+import Alert from '@material-ui/lab/Alert';
+//import useAuth from '../context/authcontext';
+import { useHistory } from "react-router-dom";
+
 
 /*function Copyright() {
   return (
@@ -50,6 +56,28 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
   const classes = useStyles();
 
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  //const { login } = useAuth()
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+  const history = useHistory()
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+
+    try {
+      setError("")
+      setLoading(true)
+      //await login(emailRef.current.value, passwordRef.current.value)
+      history.push("/Dashboard")
+    } catch {
+      setError("Failed to log in")
+    }
+
+    setLoading(false)
+  }
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -60,7 +88,8 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Connexion Admin Vendeur
         </Typography>
-        <form className={classes.form} noValidate>
+         {error && <Alert variant="danger">{error}</Alert>}
+        <form className={classes.form} onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -71,6 +100,7 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            ref={emailRef}
           />
           <TextField
             variant="outlined"
@@ -82,13 +112,11 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+            ref={passwordRef}
           />
           <Button
             type="submit"
+            //disabled={loading}
             fullWidth
             variant="contained"
             color="primary"
@@ -96,7 +124,7 @@ export default function SignIn() {
           >
             Sign In
           </Button>
-          <Grid container>
+          {/*<Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
                 Forgot password?
@@ -107,7 +135,7 @@ export default function SignIn() {
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
-          </Grid>
+          </Grid>*/}
         </form>
       </div>
       <Box mt={8}>

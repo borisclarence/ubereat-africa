@@ -1,7 +1,7 @@
 /*import logo from './logo.svg';
 import './App.css';*/
-
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React from 'react';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import Dashboard from "./components/Dashboard";
 import Products from "./components/Products";
 import Settings from "./components/Settings";
@@ -11,13 +11,13 @@ import Specialities from "./components/Specialities";
 import Signin from "./components/Signin";
 import Signup from "./components/Signup";
 
-import { AuthProvider } from "./context/AuthContext"
+import { AuthProvider } from "./context/authcontext"
 
 import PrivateRoute from "./Routes/PrivateRoute";
 
 function App() {
   return (
-    <BrowserRouter>
+    /*<BrowserRouter>*/
       <div>
       <Router>
           <AuthProvider>
@@ -34,7 +34,7 @@ function App() {
           </AuthProvider>
         </Router>
       </div>
-    </BrowserRouter>
+    /*</BrowserRouter>*/
   );
 }
 
