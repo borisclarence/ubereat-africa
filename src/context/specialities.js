@@ -5,7 +5,7 @@ const SpecialitiesContext = React.createContext()
 
 const db = auth.firestore();
 
-export function useAuth() {
+export function useSpeciale() {
   return useContext(SpecialitiesContext)
 }
 

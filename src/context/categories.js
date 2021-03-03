@@ -5,7 +5,7 @@ const CategoriesContext = React.createContext()
 
 const firestore = auth.firestore();
 
-export function useAuth() {
+export function useCate() {
   return useContext(CategoriesContext)
 }
 

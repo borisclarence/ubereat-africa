@@ -5,7 +5,7 @@ const ProductContext = React.createContext()
 
 const firestore = auth.firestore();
 
-export function useAuth() {
+export function useProducts() {
   return useContext(ProductContext)
 }
 

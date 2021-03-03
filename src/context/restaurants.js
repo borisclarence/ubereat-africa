@@ -5,7 +5,7 @@ const RestaurantsContext = React.createContext()
 
 const db = auth.firestore();
 
-export function useAuth() {
+export function useResto() {
   return useContext(RestaurantsContext)
 }
 

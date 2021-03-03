@@ -13,11 +13,12 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Copyright from './Footer';
-import { useForm } from "react-hook-form";
 import Input from "@material-ui/core/Input";
 import Alert from '@material-ui/lab/Alert';
-//import useAuth from '../context/authcontext';
+import { useAuth } from '../context/authcontext';
 import { useHistory } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import Spinner from '../tools/spinner';
 
 
 /*function Copyright() {
@@ -55,28 +56,20 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
+  const re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  const pass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+  const userlogin = useAuth();
 
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  //const { login } = useAuth()
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
-  const history = useHistory()
 
-  async function handleSubmit(e) {
-    e.preventDefault()
-
-    try {
-      setError("")
-      setLoading(true)
-      //await login(emailRef.current.value, passwordRef.current.value)
-      history.push("/Dashboard")
-    } catch {
-      setError("Failed to log in")
-    }
-
-    setLoading(false)
+  const [spin, setSpin] = React.useState(false);
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = async data => {
+    setSpin(true);
+    await userlogin.login(data)
+    setSpin(false);
+    //history.push('/settings')
   }
+
 
   return (
     <Container component="main" maxWidth="xs">
@@ -88,19 +81,34 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Connexion Admin Vendeur
         </Typography>
-         {error && <Alert variant="danger">{error}</Alert>}
-        <form className={classes.form} onSubmit={handleSubmit}>
+         {errors && <Alert variant="danger">{errors}</Alert>}
+        <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+          {spin && <Spinner />}
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
+            type="email"
             id="email"
+            //defaultValue={user.email}
             label="Email Address"
             name="email"
             autoComplete="email"
-            autoFocus
-            ref={emailRef}
+            //autoFocus
+            inputRef={register({
+              required: {
+                value: true,
+                message: "Champs requis *"
+              },
+              pattern: {
+                value: re,
+                message: "Mauvais email"
+              },
+            })}
+            error={errors.email}
+            helperText={errors.email ? errors.email.message : ''}
+
           />
           <TextField
             variant="outlined"
@@ -112,7 +120,19 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
-            ref={passwordRef}
+            error={errors.oldpassword}
+            inputRef={register({
+              required: {
+                value: true,
+                message: "Champs requis *"
+              },
+              pattern: {
+                value: pass,
+                message: "Doit avoir 8 caractères, une majuscule, une minuscule et un chiffre"
+              }
+            })}
+            helperText={errors.password ? errors.password.message : ''}
+
           />
           <Button
             type="submit"

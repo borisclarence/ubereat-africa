@@ -5,7 +5,7 @@ const UserContext = React.createContext()
 
 const firestore = auth.firestore();
 
-export function useAuth() {
+export function useAdmin() {
   return useContext(UserContext)
 }
 

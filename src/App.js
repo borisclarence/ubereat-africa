@@ -10,30 +10,29 @@ import Restaurants from "./components/Restaurants";
 import Specialities from "./components/Specialities";
 import Signin from "./components/Signin";
 import Signup from "./components/Signup";
+import { AuthProvider } from "./context/authcontext";
 
-import { AuthProvider } from "./context/authcontext"
+
 
 import PrivateRoute from "./Routes/PrivateRoute";
 
 function App() {
   return (
     /*<BrowserRouter>*/
-      <div>
-      <Router>
-          <AuthProvider>
-              <Switch>
-                  <Route exact path="/" component={Signin} />
-                  <Route path="/Signup" component={Signup} />
-                  <PrivateRoute path="/Dashboard" component={Dashboard} />
-                  <PrivateRoute path="/Categories" component={Categories} />
-                  <PrivateRoute path="/Products" component={Products} />
-                  <PrivateRoute path="/Restaurants" component={Restaurants} />
-                  <PrivateRoute path="/Specialities" component={Specialities} />
-                  <PrivateRoute path="/Settings" component={Settings} />
-              </Switch>
-          </AuthProvider>
-        </Router>
-      </div>
+        <AuthProvider>
+          <Router>
+            <Switch>
+                <Route exact path="/" component={Signin} />
+                <Route path="/Signup" component={Signup} />
+                <PrivateRoute path="/Dashboard" component={Dashboard} />
+                <PrivateRoute path="/Categories" component={Categories} />
+                <PrivateRoute path="/Products" component={Products} />
+                <PrivateRoute path="/Restaurants" component={Restaurants} />
+                <PrivateRoute path="/Specialities" component={Specialities} />
+                <PrivateRoute path="/Settings" component={Settings} />
+            </Switch>
+          </Router>
+        </AuthProvider>
     /*</BrowserRouter>*/
   );
 }
